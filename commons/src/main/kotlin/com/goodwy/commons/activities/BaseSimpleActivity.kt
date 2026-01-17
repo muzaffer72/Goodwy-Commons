@@ -113,9 +113,11 @@ abstract class BaseSimpleActivity : EdgeToEdgeActivity() {
 
         if (isAutoTheme()) changeAutoTheme()
 
-        if (!packageName.startsWith("com.goodwy.", true) && !isNewApp()) {
-            if ((0..50).random() == 10 || baseConfig.appRunCount % 100 == 0) {
-                showModdedAppWarning()
+        if (!resources.getBoolean(R.bool.disable_fake_version_check)) {
+            if (!packageName.startsWith("com.goodwy.", true) && !isNewApp()) {
+                if ((0..50).random() == 10 || baseConfig.appRunCount % 100 == 0) {
+                    showModdedAppWarning()
+                }
             }
         }
 
@@ -703,10 +705,12 @@ abstract class BaseSimpleActivity : EdgeToEdgeActivity() {
         subscriptionYearIdListRu: ArrayList<String> = arrayListOf("", "", ""),
         showAppIconColor: Boolean = false
     ) {
-        if (!packageName.contains("ywdoog".reversed(), true)) {
-            if (baseConfig.appRunCount > 100) {
-                showModdedAppWarning()
-                return
+        if (!resources.getBoolean(R.bool.disable_fake_version_check)) {
+            if (!packageName.contains("ywdoog".reversed(), true)) {
+                if (baseConfig.appRunCount > 100) {
+                    showModdedAppWarning()
+                    return
+                }
             }
         }
 

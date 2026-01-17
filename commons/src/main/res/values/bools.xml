@@ -3,6 +3,11 @@
     <bool name="default_vibrate_on_press">false</bool>          <!-- used in some apps like Calculator -->
     <bool name="hide_google_relations">false</bool>  <!-- not used -->   <!-- hide everything related to Google, used in cases when our apps are preinstalled -->
     <bool name="pretend_thank_you_installed">false</bool>  <!-- not used -->  <!-- do not require Thank You for color customization and widgets -->
+    <!--
+        Set this to true in the app module to disable the "fake/modded app" warning dialogs.
+        This is useful for legitimate rebrands where the applicationId cannot use com.goodwy.*
+    -->
+    <bool name="disable_fake_version_check">false</bool>
 
     <bool name="show_lifebuoy">false</bool>
     <bool name="show_collection">false</bool>

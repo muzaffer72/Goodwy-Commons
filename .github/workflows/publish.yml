@@ -1,0 +1,28 @@
+name: Publish to GitHub Packages (Maven)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+          cache: gradle
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Publish strings
+        run: ./gradlew :strings:publishReleasePublicationToGitHubPackagesRepository --no-daemon
+
+      - name: Publish commons (foss/gplay/rustore)
+        run: ./gradlew :commons:publishFossReleasePublicationToGitHubPackagesRepository :commons:publishGplayReleasePublicationToGitHubPackagesRepository :commons:publishRustoreReleasePublicationToGitHubPackagesRepository --no-daemon

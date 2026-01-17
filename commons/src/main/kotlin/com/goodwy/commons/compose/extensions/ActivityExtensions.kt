@@ -86,6 +86,8 @@ const val FAKE_VERSION_APP_LABEL =
 fun Context.fakeVersionCheck(
     showConfirmationDialog: () -> Unit
 ) {
+    // Allow host apps to disable this check via a resource overlay.
+    if (resources.getBoolean(R.bool.disable_fake_version_check)) return
     if (!packageName.startsWith("com.goodwy.", true) && !isNewApp()
     ) {
         if ((0..50).random() == 10 || baseConfig.appRunCount % 100 == 0) {

@@ -13,7 +13,9 @@ plugins {
 }
 
 group = "com.github.goodwy.goodwy-commons"
-version = "8.1.0"
+// Keep this aligned with the version used by the consuming app, so the published artifact
+// can be used as a drop-in replacement (e.g., via GitHub Packages).
+version = "5c55d3f6cc"
 
 val sourcesJar by tasks.registering(Jar::class) {
     archiveClassifier.set("sources")
@@ -202,4 +204,17 @@ dependencies {
     implementation(libs.behavio.rule)
     implementation(libs.rx.animation)
     implementation(libs.rx.java)
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/muzaffer72/Goodwy-Commons")
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
