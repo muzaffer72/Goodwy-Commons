@@ -160,6 +160,7 @@ class AboutActivity : BaseComposeActivity() {
         val appId = baseConfig.appId.removePrefix("com.").removePrefix("dev.").removeSuffix(".debug")
         val url = if (!isNewApp()) {
             when (appId) {
+                "whocaller.spamdetector" -> "https://onvao.net/privacy-policy"
                 "goodwy.dialer" -> "https://sites.google.com/view/goodwy/about/privacy-policy-right-dialer"
                 "goodwy.smsmessenger" -> "https://sites.google.com/view/goodwy/about/privacy-policy-right-messages"
                 "goodwy.contacts" -> "https://sites.google.com/view/goodwy/about/privacy-policy-right-contacts"
@@ -171,6 +172,7 @@ class AboutActivity : BaseComposeActivity() {
             }
         } else {
             when (appId) {
+                "whocaller.spamdetector" -> "https://onvao.net/privacy-policy"
                 "goodwy.phone" -> "https://www.goodwy.dev/privacy-policy/privacy-policy-right-dialer"
                 "goodwy.messages" -> "https://www.goodwy.dev/privacy-policy/privacy-policy-alright-messages"
                 "goodwy.contacts" -> "https://www.goodwy.dev/privacy-policy/privacy-policy-alright-contacts"

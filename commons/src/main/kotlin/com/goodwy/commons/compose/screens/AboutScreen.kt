@@ -247,12 +247,6 @@ internal fun AboutNewSection(
             )
             Spacer(modifier = Modifier.size(18.dp))
             AboutItem(
-                text = stringResource(stringsR.string.participants_title),
-                imageVector = Icons.Rounded.Diversity3,
-                onClick = onContributorsClick,
-            )
-            Spacer(modifier = Modifier.size(18.dp))
-            AboutItem(
                 text = stringResource(R.string.third_party_licences),
                 imageVector = Icons.AutoMirrored.Outlined.Article,
                 onClick = onLicenseClick,
